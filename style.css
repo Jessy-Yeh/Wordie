@@ -1,0 +1,38 @@
+body {
+  background-color: rgb(225, 135, 135);
+  color: white;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  border-bottom: 1px solid rgb(123, 123, 123);
+  padding-bottom: 5px;
+}
+
+header {
+  margin-bottom: 1rem;
+}
+
+.game-board {
+  width: 324px;
+  margin: 0 auto;
+}
+
+/* .word-row {
+  display: flex;
+  flex-wrap: wrap;
+} */
+
+/* .letter {
+  padding: 3px;
+  border: 2px solid rgb(123, 123, 123);
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+}
+
+.letter:not(:nth-last-of-type(1)) {
+  margin-right: 6px;
+} */
