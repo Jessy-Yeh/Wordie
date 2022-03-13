@@ -7,14 +7,11 @@ const solution = "apple";
 const answers = ["", "", "", "", "", ""];
 let attemptNumber = 0;
 
-btn.addEventListener("click", () => {
-  const inputText = input.value;
-  if (inputText.length === 5) {
-    answers[attemptNumber] = inputText;
-    attemptNumber++;
-    updateHtml();
-    checkAnswers();
-    input.value = "";
+btn.addEventListener("click", submitAnswer);
+
+input.addEventListener("keyup", (e) => {
+  if (e.code === "Enter") {
+    submitAnswer();
   }
 });
 
@@ -25,6 +22,17 @@ btn.addEventListener("click", () => {
 //     console.log(inputText);
 //   }
 // });
+
+function submitAnswer() {
+  const inputText = input.value;
+  if (inputText.length === 5) {
+    answers[attemptNumber] = inputText;
+    attemptNumber++;
+    updateHtml();
+    checkAnswers();
+    input.value = "";
+  }
+}
 
 function checkAnswers() {
   const answerRows = document.querySelectorAll(".answer");
