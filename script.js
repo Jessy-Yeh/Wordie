@@ -25,13 +25,17 @@ input.addEventListener("keyup", (e) => {
 
 function submitAnswer() {
   const inputText = input.value;
-  if (inputText.length === 5) {
+  if (checkValidWord(inputText)) {
     answers[attemptNumber] = inputText.toLowerCase();
     attemptNumber++;
     updateHtml();
     checkAnswers();
     input.value = "";
   }
+}
+
+function checkValidWord(word) {
+  return word.length === 5;
 }
 
 function checkAnswers() {
