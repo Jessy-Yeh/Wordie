@@ -53,19 +53,6 @@ function checkAnswers() {
     });
   });
 }
-// function checkAnswers() {
-//   const answerRows = document.querySelectorAll(".answer");
-//   answers.forEach((answer, rowIndex) => {
-//     const answerRow = answerRows[rowIndex];
-//     const answerSpans = answerRow.querySelectorAll("span");
-//     answer.split("").map((letter, letterIndex) => {
-//       if (letter === "A" || "P" || "L" || "E") {
-//         answerSpans[letterIndex].classList.add("green");
-//         console.log(answerSpans[letterIndex]);
-//       }
-//     });
-//   });
-// }
 
 function updateHtml() {
   const htmlContent = answers
