@@ -26,7 +26,7 @@ input.addEventListener("keyup", (e) => {
 function submitAnswer() {
   const inputText = input.value;
   if (inputText.length === 5) {
-    answers[attemptNumber] = inputText;
+    answers[attemptNumber] = inputText.toLowerCase();
     attemptNumber++;
     updateHtml();
     checkAnswers();
@@ -36,19 +36,25 @@ function submitAnswer() {
 
 function checkAnswers() {
   const answerRows = document.querySelectorAll(".answer");
+
   answers.forEach((answer, rowIndex) => {
     const answerRow = answerRows[rowIndex];
     const answerSpans = answerRow.querySelectorAll("span");
-    answer.split("").forEach((letter, letterIndex) => {
-      if (solution[letterIndex] === letter.toLowerCase()) {
-        answerSpans[letterIndex].classList.add("green");
-        return;
+    const solutionLetters = [...solution];
+    const answerLetters = answer.split("");
+
+    answerLetters.forEach((letter, index) => {
+      if (solutionLetters[index] === letter) {
+        answerSpans[index].classList.add("green");
+        solutionLetters.splice(index, 1, "");
       }
-      if (solution.includes(letter.toLowerCase())) {
-        answerSpans[letterIndex].classList.add("yellow");
-      }
-      if (!solution.includes(letter.toLocaleLowerCase())) {
-        answerSpans[letterIndex].classList.add("grey");
+    });
+
+    answerLetters.forEach((letter, index) => {
+      if (solutionLetters.includes(letter)) {
+        answerSpans[index].classList.add("yellow");
+        const indexInSolution = solutionLetters.indexOf(letter);
+        solutionLetters.splice(indexInSolution, 1, "");
       }
     });
   });
