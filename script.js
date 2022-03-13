@@ -3,26 +3,71 @@ const input = document.querySelector("input");
 const btn = document.querySelector(".submit-btn");
 const answersDiv = document.querySelector(".answers");
 
-console.log(answersDiv);
-
 const solution = "apple";
 const answers = ["", "", "", "", "", ""];
 let attemptNumber = 0;
 
 btn.addEventListener("click", () => {
   const inputText = input.value;
-  // if inputText is 5 characters long
-  answers[attemptNumber] = inputText;
-
-  console.log(answers);
-
-  attemptNumber++;
-  updateHtml();
-  input.value = "";
-  // end if
+  if (inputText.length === 5) {
+    answers[attemptNumber] = inputText;
+    attemptNumber++;
+    updateHtml();
+    checkAnswers();
+    input.value = "";
+  }
 });
 
+// btn.addEventListener("change", () => {
+//   const inputText = input.value;
+//   if () {
+//     input.classList.add("invalid-answer");
+//     console.log(inputText);
+//   }
+// });
+
+function checkAnswers() {
+  const answerRows = document.querySelectorAll(".answer");
+  answers.forEach((answer, rowIndex) => {
+    const answerRow = answerRows[rowIndex];
+    const answerSpans = answerRow.querySelectorAll("span");
+    answer.split("").forEach((letter, letterIndex) => {
+      if (solution[letterIndex] === letter.toLowerCase()) {
+        answerSpans[letterIndex].classList.add("green");
+        return;
+      }
+      if (solution.includes(letter.toLowerCase())) {
+        answerSpans[letterIndex].classList.add("yellow");
+      }
+      if (!solution.includes(letter.toLocaleLowerCase())) {
+        answerSpans[letterIndex].classList.add("grey");
+      }
+    });
+  });
+}
+// function checkAnswers() {
+//   const answerRows = document.querySelectorAll(".answer");
+//   answers.forEach((answer, rowIndex) => {
+//     const answerRow = answerRows[rowIndex];
+//     const answerSpans = answerRow.querySelectorAll("span");
+//     answer.split("").map((letter, letterIndex) => {
+//       if (letter === "A" || "P" || "L" || "E") {
+//         answerSpans[letterIndex].classList.add("green");
+//         console.log(answerSpans[letterIndex]);
+//       }
+//     });
+//   });
+// }
+
 function updateHtml() {
-  const htmlContent = answers.map((answer) => `<div>${answer}</div>`).join("");
-  answersDiv.innerHTML = htmlContent.toUpperCase();
+  const htmlContent = answers
+    .map(
+      (answer) =>
+        `<div class='answer'>${answer
+          .split("")
+          .map((letter) => `<span>${letter}</span>`)
+          .join("")}</div>`
+    )
+    .join("");
+  answersDiv.innerHTML = htmlContent;
 }
