@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(225, 135, 135);
+  background-color: rgb(48, 48, 48);
   color: white;
   margin: 0 auto;
 }
@@ -15,24 +15,70 @@ header {
 }
 
 .game-board {
-  width: 324px;
+  width: 400px;
   margin: 0 auto;
-}
-
-/* .word-row {
   display: flex;
-  flex-wrap: wrap;
-} */
-
-/* .letter {
-  padding: 3px;
-  border: 2px solid rgb(123, 123, 123);
-  font-size: 2rem;
-  width: 60px;
-  height: 60px;
-  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  text-transform: uppercase;
 }
 
-.letter:not(:nth-last-of-type(1)) {
-  margin-right: 6px;
-} */
+.input-container {
+  display: flex;
+  margin-bottom: 2rem;
+  margin-left: 50px;
+}
+
+.submit-btn {
+  width: 50px;
+  margin-left: 5px;
+  background-color: rgb(48, 48, 48);
+  border: none;
+}
+
+#input {
+  background-color: rgb(213, 213, 213);
+  padding: 5px 10px;
+  border: none;
+  width: 100%;
+  color: rgb(57, 57, 57);
+  text-transform: uppercase;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.answers div {
+  margin-bottom: 5px;
+  font-size: 1.5rem;
+  text-align: center;
+  display: flex;
+}
+
+#input.invalid-answer {
+  color: brown;
+}
+
+.yellow {
+  background-color: rgb(213, 213, 39);
+}
+
+.green {
+  background-color: rgb(95, 210, 95);
+}
+
+span {
+  background-color: rgb(137, 140, 137);
+  border-radius: 2px;
+  padding: 5px;
+  width: 50px;
+  height: 50px;
+}
+
+span:not(:nth-last-of-type(1)) {
+  margin-right: 10px;
+}
