@@ -7,7 +7,7 @@ const answers = ["", "", "", "", "", ""];
 let solution = "";
 let attemptNumber = 0;
 
-const options = {
+const solutionReqOptions = {
   method: "GET",
   url: "https://random-words5.p.rapidapi.com/getRandom",
   params: { wordLength: "5" },
@@ -18,8 +18,9 @@ const options = {
 };
 
 axios
-  .request(options)
+  .request(solutionReqOptions)
   .then((response) => {
+    console.log(response.data);
     solution = response.data;
     btn.addEventListener("click", submitAnswer);
 
