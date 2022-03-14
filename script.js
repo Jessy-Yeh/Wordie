@@ -3,17 +3,35 @@ const input = document.querySelector("input");
 const btn = document.querySelector(".submit-btn");
 const answersDiv = document.querySelector(".answers");
 
-const solution = "apple";
 const answers = ["", "", "", "", "", ""];
+let solution = "";
 let attemptNumber = 0;
 
-btn.addEventListener("click", submitAnswer);
+const options = {
+  method: "GET",
+  url: "https://random-words5.p.rapidapi.com/getRandom",
+  params: { wordLength: "5" },
+  headers: {
+    "x-rapidapi-host": "random-words5.p.rapidapi.com",
+    "x-rapidapi-key": "235a134858mshf090c59729af53ap1e1eabjsn6b31f2f933a7",
+  },
+};
 
-input.addEventListener("keyup", (e) => {
-  if (e.code === "Enter") {
-    submitAnswer();
-  }
-});
+axios
+  .request(options)
+  .then((response) => {
+    solution = response.data;
+    btn.addEventListener("click", submitAnswer);
+
+    input.addEventListener("keyup", (e) => {
+      if (e.code === "Enter") {
+        submitAnswer();
+      }
+    });
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 // btn.addEventListener("change", () => {
 //   const inputText = input.value;
