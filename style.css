@@ -2,6 +2,8 @@ body {
   background-color: rgb(48, 48, 48);
   color: white;
   margin: 0 auto;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 h1 {
