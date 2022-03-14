@@ -2,6 +2,7 @@ const gameBoard = document.querySelector(".game-board");
 const input = document.querySelector("input");
 const btn = document.querySelector(".submit-btn");
 const answersDiv = document.querySelector(".answers");
+const answerCorrect = document.querySelector(".answer-noti");
 
 const answers = ["", "", "", "", "", ""];
 let solution = "";
@@ -23,12 +24,7 @@ axios
     console.log(response.data);
     solution = response.data;
     btn.addEventListener("click", submitAnswer);
-
-    input.addEventListener("keyup", (e) => {
-      if (e.code === "Enter") {
-        submitAnswer();
-      }
-    });
+    input.addEventListener("keyup", submitAnswer);
   })
   .catch((error) => {
     console.error(error);
@@ -42,8 +38,22 @@ axios
 //   }
 // });
 
-function submitAnswer() {
+function submitAnswer(e) {
+  if (e.code && e.code !== "Enter") return;
+
   const inputText = input.value;
+
+  if (inputText === solution) {
+    answers[attemptNumber] = inputText.toLowerCase();
+    attemptNumber++;
+    updateHtml();
+    checkAnswers();
+    answerCorrect.classList.add("noti-display");
+    btn.removeEventListener("click", submitAnswer);
+    input.removeEventListener("keyup", submitAnswer);
+    return;
+  }
+
   if (checkValidWord(inputText)) {
     answers[attemptNumber] = inputText.toLowerCase();
     attemptNumber++;
@@ -52,6 +62,10 @@ function submitAnswer() {
     input.value = "";
   }
 }
+
+answerCorrect.addEventListener("click", () => {
+  answerCorrect.classList.remove("noti-display");
+});
 
 function checkValidWord(word) {
   return word.length === 5;
