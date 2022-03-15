@@ -96,6 +96,10 @@ header {
   background-color: rgb(95, 210, 95);
 }
 
+.grey {
+  background-color: rgb(82, 82, 82);
+}
+
 span {
   background-color: rgb(137, 140, 137);
   border-radius: 2px;
@@ -158,17 +162,13 @@ span:not(:nth-last-of-type(1)) {
   padding: 10px 15px;
 }
 
-.noti-display {
-  display: block;
-}
-
-.instructions {
+.how-to-play {
   max-width: 250px;
   margin: 0 auto;
   cursor: pointer;
 }
 
-.instructions h2 {
+.how-to-play h2 {
   border: 0.2rem solid #fff;
   border-radius: 2rem;
   padding: 2rem 1rem;
@@ -181,4 +181,71 @@ span:not(:nth-last-of-type(1)) {
     0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
   text-align: center;
   font-size: 1rem;
+}
+
+.instructions-content-container {
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  background-color: rgba(34, 34, 34, 0.7);
+}
+
+.instructions-content {
+  background-color: rgb(165, 67, 146);
+  padding: 1rem;
+  position: relative;
+  top: 100px;
+  width: 400px;
+  height: 500px;
+}
+
+.instructions-content h3 {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.instructions-content h4 {
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+.instructions-content div {
+  display: flex;
+}
+
+.instructions-content span {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+
+.instructions-content p {
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  margin-bottom: 1rem;
+  margin-top: 0.3rem;
+}
+
+.instructions-content p span {
+  background: none;
+  font-weight: bolder;
+}
+
+.instructions-content button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.display {
+  display: flex;
+  justify-content: center;
 }

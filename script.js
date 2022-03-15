@@ -5,6 +5,9 @@ const answersDiv = document.querySelector(".answers");
 const answerCorrect = document.querySelector(".correct");
 const answerWrong = document.querySelector(".wrong");
 const answerWrongSpan = document.querySelector(".wrong span");
+const invalidGuess = document.querySelector(".invalidword-alart");
+const howToPlay = document.querySelector(".how-to-play");
+const instructions = document.querySelector(".instructions-content-container");
 
 const answers = ["", "", "", "", "", ""];
 let solution = "";
@@ -32,13 +35,12 @@ axios
     console.error(error);
   });
 
-// btn.addEventListener("change", () => {
-//   const inputText = input.value;
-//   if () {
-//     input.classList.add("invalid-answer");
-//     console.log(inputText);
-//   }
-// });
+howToPlay.addEventListener("click", () => {
+  instructions.classList.add("display");
+});
+instructions.addEventListener("click", () => {
+  instructions.classList.remove("display");
+});
 
 function submitAnswer(e) {
   if (e.code && e.code !== "Enter") return;

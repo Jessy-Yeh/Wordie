@@ -17,10 +17,46 @@
       <h1>Wordie</h1>
     </header>
 
-    <div class="game-board">
-      <div class="instructions">
-        <h2>How to play?</h2>
+    <div class="how-to-play">
+      <h2>How to play?</h2>
+    </div>
+
+    <div class="instructions-content-container">
+      <div class="instructions-content">
+        <button>x</button>
+        <h3>How to play?</h3>
+        <p>Guess the WORDIE in six tries.</p>
+
+        <p>
+          Each guess must be a valid five-letter word. Hit the enter button to
+          submit.
+        </p>
+        <p>
+          After each guess, the color of the tiles will change to show how close
+          your guess was to the word.
+        </p>
+        <hr />
+        <h4>Examples</h4>
+        <div>
+          <span class="green">W</span><span>E</span><span>A</span><span>R</span
+          ><span>Y</span>
+          <div></div>
+        </div>
+        <p>The letter <span>W</span> is in the word and in the correct spot.</p>
+        <div>
+          <span>P</span><span class="yellow">I</span><span>L</span><span>L</span
+          ><span>S</span>
+        </div>
+        <p>The letter <span>I</span> is in the word but in the wrong spot.</p>
+        <div>
+          <span>V</span><span>A</span><span>G</span><span class="grey">U</span
+          ><span>E</span>
+        </div>
+        <p>The letter <span>U</span> is not in the word in any spot.</p>
       </div>
+    </div>
+
+    <div class="game-board">
       <div class="input-container">
         <input type="text" id="input" placeholder="type your answer here..." />
         <!-- <button class="submit-btn"><img src="./images/arrow.png" /></button> -->
