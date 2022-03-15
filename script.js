@@ -5,7 +5,7 @@ const answersDiv = document.querySelector(".answers");
 const answerCorrect = document.querySelector(".correct");
 const answerWrong = document.querySelector(".wrong");
 const answerWrongSpan = document.querySelector(".wrong span");
-const invalidGuess = document.querySelector(".invalidword-alart");
+const invalidGuess = document.querySelector(".invalidword-alert");
 const howToPlay = document.querySelector(".how-to-play");
 const instructions = document.querySelector(".instructions-content-container");
 
