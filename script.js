@@ -2,7 +2,9 @@ const gameBoard = document.querySelector(".game-board");
 const input = document.querySelector("input");
 const btn = document.querySelector(".submit-btn");
 const answersDiv = document.querySelector(".answers");
-const answerCorrect = document.querySelector(".answer-noti");
+const answerCorrect = document.querySelector(".correct");
+const answerWrong = document.querySelector(".wrong");
+const answerWrongSpan = document.querySelector(".wrong span");
 
 const answers = ["", "", "", "", "", ""];
 let solution = "";
@@ -67,10 +69,22 @@ function submitAnswer(e) {
     attemptNumber === 5 &&
     inputText !== solution
   ) {
+    answers[attemptNumber] = inputText.toLowerCase();
+    attemptNumber++;
+    checkAnswers();
+    answerWrong.classList.add("noti-display");
+    answerWrongSpan.innerHTML = solution;
+    btn.removeEventListener("click", submitAnswer);
+    input.removeEventListener("keyup", submitAnswer);
+    return;
+  }
 }
 
 answerCorrect.addEventListener("click", () => {
   answerCorrect.classList.remove("noti-display");
+});
+answerWrong.addEventListener("click", () => {
+  answerWrong.classList.remove("noti-display");
 });
 
 function checkValidWord(word) {
