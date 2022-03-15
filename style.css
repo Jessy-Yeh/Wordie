@@ -2,6 +2,10 @@ body {
   background-color: rgb(48, 48, 48);
   color: white;
   margin: 0 auto;
+  background-image: url("./images/wall.jpg");
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
