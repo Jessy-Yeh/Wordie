@@ -22,7 +22,7 @@ header {
 }
 
 .game-board {
-  width: 400px;
+  width: 350px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -32,8 +32,15 @@ header {
 
 .input-container {
   display: flex;
-  margin-bottom: 2rem;
-  margin-left: 50px;
+  margin-bottom: 0.5rem;
+  /* margin-left: 50px; */
+}
+
+.invalidword-alert {
+  font-size: 0.8rem;
+  color: rgb(252, 52, 52);
+  /* margin-left: 50px; */
+  margin-bottom: 1rem;
 }
 
 .submit-btn {
@@ -50,6 +57,17 @@ header {
   width: 100%;
   color: rgb(57, 57, 57);
   text-transform: uppercase;
+  border-radius: 0.2rem;
+}
+
+#input::placeholder {
+  font-size: 0.8rem;
+}
+
+#input:focus {
+  outline: none;
+  border-color: #c271ce;
+  box-shadow: 0 0 10px #c271ce;
 }
 
 .answers {
@@ -67,7 +85,7 @@ header {
 }
 
 #input.invalid-answer {
-  color: brown;
+  color: rgb(255, 52, 52);
 }
 
 .yellow {
