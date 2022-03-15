@@ -43,7 +43,7 @@ function submitAnswer(e) {
 
   const inputText = input.value;
 
-  if (inputText === solution) {
+  if (inputText === solution && attemptNumber < 5) {
     answers[attemptNumber] = inputText.toLowerCase();
     attemptNumber++;
     updateHtml();
@@ -54,13 +54,19 @@ function submitAnswer(e) {
     return;
   }
 
-  if (checkValidWord(inputText)) {
+  if (checkValidWord(inputText) && attemptNumber < 5) {
     answers[attemptNumber] = inputText.toLowerCase();
     attemptNumber++;
     updateHtml();
     checkAnswers();
     input.value = "";
   }
+
+  if (
+    checkValidWord(inputText) &&
+    attemptNumber === 5 &&
+    inputText !== solution
+  ) {
 }
 
 answerCorrect.addEventListener("click", () => {
