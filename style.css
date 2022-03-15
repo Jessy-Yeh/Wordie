@@ -84,3 +84,57 @@ span {
 span:not(:nth-last-of-type(1)) {
   margin-right: 10px;
 }
+
+.answer-noti {
+  margin: 0 auto;
+  text-align: center;
+  padding: 50px 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(31, 31, 31, 0.8);
+  display: none;
+}
+
+.correct-noti {
+  position: relative;
+  top: 100px;
+  background-color: rgb(199, 104, 104);
+  width: 400px;
+  height: 200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrong-noti {
+  position: relative;
+  top: 100px;
+  background-color: rgb(104, 104, 199);
+  width: 400px;
+  height: 200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrong-noti span {
+  background-color: rgb(121, 191, 90);
+}
+
+.answer-noti button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+}
+
+.noti-display {
+  display: block;
+}
