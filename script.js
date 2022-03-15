@@ -90,7 +90,9 @@ answerWrong.addEventListener("click", () => {
 });
 
 function checkValidWord(word) {
-  return word.length === 5;
+  const isOnlyLetters = /^[a-zA-Z]+$/.test(word);
+  const isFiveLetters = word.length === 5;
+  return isFiveLetters && isOnlyLetters;
 }
 
 function checkAnswers() {
