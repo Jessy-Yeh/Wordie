@@ -174,6 +174,9 @@ span:not(:nth-last-of-type(1)) {
   position: relative;
   top: 100px;
   background-color: rgb(199, 104, 104);
+  box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 1rem rgb(199, 104, 104),
+    0 0 0.8rem rgb(199, 104, 104), 0 0 2.8rem rgb(199, 104, 104),
+    inset 0 0 1.3rem rgb(199, 104, 104);
   width: 400px;
   height: 200px;
   margin: 0 auto;
@@ -185,6 +188,9 @@ span:not(:nth-last-of-type(1)) {
   position: relative;
   top: 100px;
   background-color: rgb(104, 104, 199);
+  box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 1rem rgb(104, 104, 199),
+    0 0 0.8rem rgb(104, 104, 199), 0 0 2.8rem rgb(104, 104, 199),
+    inset 0 0 1.3rem rgb(104, 104, 199);
   width: 400px;
   height: 200px;
   margin: 0 auto;
@@ -195,6 +201,10 @@ span:not(:nth-last-of-type(1)) {
 
 .wrong-noti span {
   background-color: rgb(121, 191, 90);
+  box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 1rem rgb(95, 210, 95),
+    0 0 0.8rem rgb(95, 210, 95), 0 0 2.8rem rgb(95, 210, 95),
+    inset 0 0 1.3rem rgb(95, 210, 95);
+  padding: 5px;
 }
 
 .answer-noti button {
@@ -263,6 +273,9 @@ span:not(:nth-last-of-type(1)) {
   top: 100px;
   width: 400px;
   height: 500px;
+  box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 1rem rgb(165, 67, 146),
+    0 0 0.8rem rgb(165, 67, 146), 0 0 2.8rem rgb(165, 67, 146),
+    inset 0 0 1.3rem rgb(165, 67, 146);
 }
 
 .instructions-content h3 {
