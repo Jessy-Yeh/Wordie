@@ -202,29 +202,41 @@ span:not(:nth-last-of-type(1)) {
 }
 
 .how-to-play {
-  max-width: 100px;
+  max-width: 200px;
   margin: 0 auto;
   cursor: pointer;
+
+  padding: 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.8rem;
   font-family: "Kaushan Script", cursive;
+  letter-spacing: 2px;
+  text-align: center;
 }
 
 .how-to-play:hover h2 {
-  background-color: #c271ce;
+  /* background-color: #c271ce; */
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff,
+    0 0 42px rgb(255, 235, 82), 0 0 82px rgb(255, 235, 82),
+    0 0 92px rgb(255, 235, 82), 0 0 102px rgb(255, 235, 82),
+    0 0 151px rgb(255, 235, 82);
+  animation: shake 0.8s;
 }
 
-.how-to-play h2 {
-  border: 0.2rem solid #fff;
-  border-radius: 1rem;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
-    0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
-  color: #fff;
-  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
-    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
-  text-align: center;
-  font-size: 1rem;
-  transition: 0.2s;
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(25px);
+  }
+
+  50% {
+    transform: translateX(-25px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
 }
 
 .instructions-content-container {
