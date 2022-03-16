@@ -37,6 +37,17 @@ axios
     console.error(error);
   });
 
+input.addEventListener("change", () => {
+  const inputText = input.value;
+  if (inputText.length !== 5) {
+    input.classList.add("invalid-answer");
+    invalidGuess.classList.add("activate");
+  } else {
+    input.classList.remove("invalid-answer");
+    invalidGuess.classList.remove("activate");
+  }
+});
+
 howToPlay.addEventListener("click", () => {
   instructions.classList.add("display");
 });
