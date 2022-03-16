@@ -50,21 +50,24 @@ header {
   display: block;
 }
 
-.submit-btn {
+/* .submit-btn {
   width: 50px;
   margin-left: 5px;
   background-color: rgb(48, 48, 48);
   border: none;
-}
+} */
 
 #input {
-  background-color: rgb(174, 125, 164);
+  background: none;
+  box-shadow: 0 0 30px #c271ce;
   padding: 10px 10px;
   border: none;
   width: 100%;
   text-transform: uppercase;
   border-radius: 0.2rem;
   color: rgb(255, 255, 255);
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
+    0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
 }
 
 #input::placeholder {
@@ -74,9 +77,10 @@ header {
 
 #input:focus {
   outline: none;
-  background-color: rgb(227, 171, 216);
+  background-color: rgb(159, 76, 142);
   border-color: #c271ce;
-  box-shadow: 0 0 30px #c271ce;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
+    0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
 }
 
 .answers {
