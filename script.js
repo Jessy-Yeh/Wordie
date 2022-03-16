@@ -65,8 +65,8 @@ function submitAnswer(e) {
     attemptNumber++;
     updateHtml();
     checkAnswers();
-    answerCorrect.classList.add("noti-display");
-    btn.removeEventListener("click", submitAnswer);
+    answerCorrect.classList.add("display");
+    // btn.removeEventListener("click", submitAnswer);
     input.removeEventListener("keyup", submitAnswer);
     return;
   }
@@ -84,22 +84,19 @@ function submitAnswer(e) {
     attemptNumber === 5 &&
     inputText !== solution
   ) {
-    answers[attemptNumber] = inputText.toLowerCase();
-    attemptNumber++;
-    checkAnswers();
-    answerWrong.classList.add("noti-display");
     answerWrongSpan.innerHTML = solution;
-    btn.removeEventListener("click", submitAnswer);
+    answerWrong.classList.add("display");
+    // btn.removeEventListener("click", submitAnswer);
     input.removeEventListener("keyup", submitAnswer);
     return;
   }
 }
 
 answerCorrect.addEventListener("click", () => {
-  answerCorrect.classList.remove("noti-display");
+  answerCorrect.classList.remove("display");
 });
 answerWrong.addEventListener("click", () => {
-  answerWrong.classList.remove("noti-display");
+  answerWrong.classList.remove("display");
 });
 
 function checkValidWord(word) {
