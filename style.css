@@ -290,6 +290,7 @@ h1 {
   border: none;
   color: white;
   padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
 .display {
