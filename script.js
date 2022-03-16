@@ -10,7 +10,7 @@ const howToPlay = document.querySelector(".how-to-play");
 const instructions = document.querySelector(".instructions-content-container");
 
 const answers = ["", "", "", "", "", ""];
-let solution = "";
+let solution = "apple";
 let attemptNumber = 0;
 
 const solutionReqOptions = {
@@ -23,13 +23,15 @@ const solutionReqOptions = {
   },
 };
 
+input.addEventListener("keyup", submitAnswer);
+
 axios
   .request(solutionReqOptions)
   .then((response) => {
     console.log(response.data);
-    solution = response.data;
-    btn.addEventListener("click", submitAnswer);
-    input.addEventListener("keyup", submitAnswer);
+    // solution = response.data;
+    // btn.addEventListener("click", submitAnswer);
+    // input.addEventListener("keyup", submitAnswer);
   })
   .catch((error) => {
     console.error(error);
