@@ -10,6 +10,10 @@ body {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
+header {
+  margin-bottom: 2.5rem;
+}
+
 h1 {
   text-align: center;
   border-bottom: 1px solid rgb(211, 160, 184);
@@ -21,10 +25,6 @@ h1 {
   -webkit-text-stroke: 0.5px #c55acb;
 }
 
-header {
-  margin-bottom: 2.5rem;
-}
-
 .game-board {
   width: 250px;
   margin: 0 auto;
@@ -34,45 +34,21 @@ header {
   text-transform: uppercase;
 }
 
-.input-container {
-  display: flex;
-  margin-bottom: 0.5rem;
-}
-
-.invalidword-alert {
-  display: none;
-  font-size: 0.8rem;
-  color: rgb(247, 39, 147);
-  font-weight: bold;
-}
-
-.activate {
-  display: block;
-}
-
-/* .submit-btn {
-  width: 50px;
-  margin-left: 5px;
-  background-color: rgb(48, 48, 48);
-  border: none;
-} */
-
 #input {
-  background: none;
-  box-shadow: 0 0 30px #c271ce;
-  padding: 10px 10px;
-  border: none;
   width: 100%;
-  text-transform: uppercase;
-  border-radius: 0.2rem;
+  padding: 10px 10px;
+  background: none;
   color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0.2rem;
   box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
     0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
 }
 
 #input::placeholder {
-  color: rgb(216, 213, 213);
   font-size: 0.8rem;
+  color: rgb(216, 213, 213);
 }
 
 #input:focus {
@@ -83,40 +59,52 @@ header {
     0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
 }
 
-.answers {
+#input.invalid-answer {
+  color: rgb(247, 39, 147);
+}
+
+.invalidword-alert {
+  display: none;
+  margin-top: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: rgb(247, 39, 147);
+}
+
+.invalid-answer + .invalidword-alert {
+  display: block;
+}
+
+.answer-grid {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.answers div {
+.answer-grid div {
+  display: flex;
   margin-top: 20px;
   margin-bottom: 5px;
   font-size: 1.5rem;
   text-align: center;
-  display: flex;
-}
-
-#input.invalid-answer {
-  color: rgb(247, 39, 147);
 }
 
 .letter-span {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.5rem;
+  padding: 5px;
+  color: #fff;
+  border-radius: 2px;
   background-color: rgb(82, 82, 82);
   box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 1rem rgb(82, 82, 82),
     0 0 0.8rem rgb(82, 82, 82), 0 0 2.8rem rgb(82, 82, 82),
     inset 0 0 1.3rem rgb(82, 82, 82);
-  color: #fff;
   text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff,
     0 0 42px rgb(215, 215, 215), 0 0 82px rgb(215, 215, 215),
     0 0 92px rgb(215, 215, 215), 0 0 102px rgb(215, 215, 215),
     0 0 151px rgb(215, 215, 215);
-  border-radius: 2px;
-  padding: 5px;
-  width: 50px;
-  height: 50px;
-  margin-bottom: 0.5rem;
 }
 
 .yellow {
@@ -153,53 +141,59 @@ header {
     0 0 151px rgb(215, 215, 215);
 }
 
-span:not(:nth-last-of-type(1)) {
+.letter-span:not(:nth-last-of-type(1)) {
   margin-right: 0.5rem;
 }
 
-.answer-noti {
+.pop-up-container {
+  display: none;
   margin: 0 auto;
-  text-align: center;
   padding: 50px 0px;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  text-align: center;
   background-color: rgba(31, 31, 31, 0.8);
-  display: none;
 }
 
-.correct-noti {
+.pop-up-container button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.pop-up {
+  width: 400px;
+  height: 200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   top: 100px;
+}
+
+.success {
   background-color: rgb(199, 104, 104);
   box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 1rem rgb(199, 104, 104),
     0 0 0.8rem rgb(199, 104, 104), 0 0 2.8rem rgb(199, 104, 104),
     inset 0 0 1.3rem rgb(199, 104, 104);
-  width: 400px;
-  height: 200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
-.wrong-noti {
-  position: relative;
-  top: 100px;
+.fail {
   background-color: rgb(104, 104, 199);
   box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 1rem rgb(104, 104, 199),
     0 0 0.8rem rgb(104, 104, 199), 0 0 2.8rem rgb(104, 104, 199),
     inset 0 0 1.3rem rgb(104, 104, 199);
-  width: 400px;
-  height: 200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.wrong-noti span {
+.fail span {
   background-color: rgb(121, 191, 90);
   box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 1rem rgb(95, 210, 95),
     0 0 0.8rem rgb(95, 210, 95), 0 0 2.8rem rgb(95, 210, 95),
@@ -207,36 +201,100 @@ span:not(:nth-last-of-type(1)) {
   padding: 5px;
 }
 
-.answer-noti button {
+.how-to-play {
+  max-width: 200px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  font-family: "Kaushan Script", cursive;
+  text-align: center;
+}
+
+.how-to-play button {
+  cursor: pointer;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  color: white;
+}
+
+.how-to-play:hover button {
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff,
+    0 0 42px rgb(255, 235, 82), 0 0 82px rgb(255, 235, 82),
+    0 0 92px rgb(255, 235, 82), 0 0 102px rgb(255, 235, 82),
+    0 0 151px rgb(255, 235, 82);
+  animation: shake 0.8s;
+}
+
+.howtoplay-content-container {
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  background-color: rgba(34, 34, 34, 0.7);
+}
+
+.howtoplay-content {
+  background-color: rgb(165, 67, 146);
+  padding: 1rem;
+  position: relative;
+  top: 100px;
+  width: 400px;
+  height: 500px;
+  box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 1rem rgb(165, 67, 146),
+    0 0 0.8rem rgb(165, 67, 146), 0 0 2.8rem rgb(165, 67, 146),
+    inset 0 0 1.3rem rgb(165, 67, 146);
+}
+
+.howtoplay-content h2 {
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+.howtoplay-content h3 {
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+.howtoplay-content div {
+  display: flex;
+}
+
+.howtoplay-content span {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border: 2px solid rgb(171, 171, 171);
+}
+
+.howtoplay-content p {
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  margin: 0.3rem 0 1rem;
+}
+
+.howtoplay-content p span {
+  background: none;
+  font-weight: bolder;
+  border: none;
+}
+
+.howtoplay-content button {
   position: absolute;
   top: 0;
   right: 0;
   background: none;
   border: none;
   color: white;
-  padding: 10px 15px;
+  padding: 0.5rem 1rem;
 }
 
-.how-to-play {
-  max-width: 200px;
-  margin: 0 auto;
-  cursor: pointer;
-
-  padding: 1rem;
-  margin-bottom: 2rem;
-  font-size: 0.8rem;
-  font-family: "Kaushan Script", cursive;
-  letter-spacing: 2px;
-  text-align: center;
-}
-
-.how-to-play:hover h2 {
-  /* background-color: #c271ce; */
-  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff,
-    0 0 42px rgb(255, 235, 82), 0 0 82px rgb(255, 235, 82),
-    0 0 92px rgb(255, 235, 82), 0 0 102px rgb(255, 235, 82),
-    0 0 151px rgb(255, 235, 82);
-  animation: shake 0.8s;
+.display {
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes shake {
@@ -253,76 +311,4 @@ span:not(:nth-last-of-type(1)) {
   100% {
     transform: translateX(0px);
   }
-}
-
-.instructions-content-container {
-  margin: 0 auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: none;
-  background-color: rgba(34, 34, 34, 0.7);
-}
-
-.instructions-content {
-  background-color: rgb(165, 67, 146);
-  padding: 1rem;
-  position: relative;
-  top: 100px;
-  width: 400px;
-  height: 500px;
-  box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 1rem rgb(165, 67, 146),
-    0 0 0.8rem rgb(165, 67, 146), 0 0 2.8rem rgb(165, 67, 146),
-    inset 0 0 1.3rem rgb(165, 67, 146);
-}
-
-.instructions-content h3 {
-  text-align: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-.instructions-content h4 {
-  margin-bottom: 1rem;
-  font-size: 0.8rem;
-}
-
-.instructions-content div {
-  display: flex;
-}
-
-.instructions-content span {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  border: 2px solid rgb(171, 171, 171);
-}
-
-.instructions-content p {
-  font-size: 0.8rem;
-  line-height: 1.2rem;
-  margin-bottom: 1rem;
-  margin-top: 0.3rem;
-}
-
-.instructions-content p span {
-  background: none;
-  font-weight: bolder;
-  border: none;
-}
-
-.instructions-content button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: none;
-  border: none;
-  color: white;
-  padding: 0.5rem 1rem;
-}
-
-.display {
-  display: flex;
-  justify-content: center;
 }
