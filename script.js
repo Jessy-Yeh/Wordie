@@ -110,7 +110,7 @@ function checkAnswers() {
 
   answers.forEach((answer, rowIndex) => {
     const answerRow = answerRows[rowIndex];
-    const answerSpans = answerRow.querySelectorAll("span");
+    const answerSpans = answerRow.querySelectorAll(".letter-span");
     const solutionLetters = [...solution];
     const answerLetters = answer.split("");
 
@@ -137,7 +137,7 @@ function updateHtml() {
       (answer) =>
         `<div class='answer'>${answer
           .split("")
-          .map((letter) => `<span>${letter}</span>`)
+          .map((letter) => `<span class='letter-span'>${letter}</span>`)
           .join("")}</div>`
     )
     .join("");
