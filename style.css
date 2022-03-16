@@ -42,8 +42,8 @@ header {
 .invalidword-alert {
   display: none;
   font-size: 0.8rem;
-  color: rgb(252, 52, 52);
-  margin-bottom: 1rem;
+  color: rgb(247, 39, 147);
+  font-weight: bold;
 }
 
 .activate {
@@ -99,7 +99,7 @@ header {
 }
 
 #input.invalid-answer {
-  color: rgb(255, 52, 52);
+  color: rgb(247, 39, 147);
 }
 
 .yellow {
