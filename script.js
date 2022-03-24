@@ -1,3 +1,5 @@
+import { words } from "./fiveLetterWords.js";
+
 const gameBoard = document.querySelector(".game-board");
 const howToPlayBtn = document.querySelector(".how-to-play button");
 const howToPlayContent = document.querySelector(".howtoplay-content-container");
@@ -9,7 +11,7 @@ const answerWrong = document.querySelector(".fail-container");
 const solutionSpan = document.querySelector(".fail span");
 
 const answers = ["", "", "", "", "", ""];
-let solution = "apple";
+let solution = words[Math.floor(Math.random() * words.length)];
 let attemptNumber = 0;
 
 // const solutionReqOptions = {
