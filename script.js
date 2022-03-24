@@ -10,48 +10,11 @@ const answerWrong = document.querySelector(".fail-container");
 const solutionSpan = document.querySelector(".fail span");
 
 const answers = ["", "", "", "", "", ""];
-let solution = words[Math.floor(Math.random() * words.length)];
+const solution = words[Math.floor(Math.random() * words.length)];
+console.log(solution);
 let attemptNumber = 0;
 
-// const solutionReqOptions = {
-//   method: "GET",
-//   url: "https://random-words5.p.rapidapi.com/getRandom",
-//   params: { wordLength: "5" },
-//   headers: {
-//     "x-rapidapi-host": "random-words5.p.rapidapi.com",
-//     "x-rapidapi-key": "235a134858mshf090c59729af53ap1e1eabjsn6b31f2f933a7",
-//   },
-// };
-
-// axios
-//   .request(solutionReqOptions)
-//   .then((response) => {
-//     console.log(response.data);
-//     // solution = response.data;
-//     // input.addEventListener("keyup", submitAnswer);
-//   })
-//   .catch((error) => {
-//     console.error(error);
-//   });
-
-input.addEventListener("keyup", submitAnswer);
-
-input.addEventListener("change", () => {
-  const inputText = input.value;
-
-  input.classList.remove("invalid-answer");
-
-  if (inputText.length !== 5) {
-    input.classList.add("invalid-answer");
-    invalidAlert.innerHTML = "Answer must have 5 letters";
-    return;
-  }
-
-  if (!words.includes(inputText)) {
-    input.classList.add("invalid-answer");
-    invalidAlert.innerHTML = "Answer is not in the word list";
-  }
-});
+input.addEventListener("change", submitAnswer);
 
 howToPlayBtn.addEventListener("click", () => {
   howToPlayContent.classList.add("display");
@@ -70,45 +33,39 @@ answerWrong.addEventListener("click", () => {
 });
 
 function submitAnswer(e) {
-  if (e.code !== "Enter") return;
+  const answer = e.target.value.toLowerCase();
 
-  const inputText = input.value;
+  input.classList.remove("invalid-answer");
 
-  if (inputText === solution && attemptNumber < 5) {
-    answers[attemptNumber] = inputText.toLowerCase();
-    attemptNumber++;
-    updateHtml();
-    checkAnswers();
-    answerCorrect.classList.add("display");
-    input.removeEventListener("keyup", submitAnswer);
+  if (answer.length !== 5) {
+    input.classList.add("invalid-answer");
+    invalidAlert.innerHTML = "Answer must have 5 letters";
     return;
   }
 
-  if (checkValidWord(inputText) && attemptNumber < 5) {
-    answers[attemptNumber] = inputText.toLowerCase();
-    attemptNumber++;
-    updateHtml();
-    checkAnswers();
-    input.value = "";
+  if (!words.includes(answer)) {
+    input.classList.add("invalid-answer");
+    invalidAlert.innerHTML = "Answer is not in the word list";
+    return;
   }
 
-  if (
-    checkValidWord(inputText) &&
-    attemptNumber === 5 &&
-    inputText !== solution
-  ) {
+  answers[attemptNumber] = answer;
+  attemptNumber++;
+  updateHtml();
+  colourAnswers();
+  input.value = "";
+
+  if (answer === solution) {
+    answerCorrect.classList.add("display");
+    input.removeEventListener("change", submitAnswer);
+    return;
+  }
+
+  if (attemptNumber === 5) {
     solutionSpan.innerHTML = solution;
     answerWrong.classList.add("display");
-    input.removeEventListener("keyup", submitAnswer);
-    return;
+    input.removeEventListener("change", submitAnswer);
   }
-}
-
-function checkValidWord(word) {
-  const isOnlyLetters = /^[a-zA-Z]+$/.test(word);
-  const isFiveLetters = word.length === 5;
-  const isInWordList = words.includes(word);
-  return isFiveLetters && isOnlyLetters && isInWordList;
 }
 
 function updateHtml() {
@@ -124,7 +81,7 @@ function updateHtml() {
   answersDiv.innerHTML = htmlContent;
 }
 
-function checkAnswers() {
+function colourAnswers() {
   const answerRows = document.querySelectorAll(".answer");
 
   answers.forEach((answer, rowIndex) => {
