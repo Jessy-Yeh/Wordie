@@ -1,6 +1,5 @@
 import { words } from "./fiveLetterWords.js";
 
-const gameBoard = document.querySelector(".game-board");
 const howToPlayBtn = document.querySelector(".how-to-play button");
 const howToPlayContent = document.querySelector(".howtoplay-content-container");
 const input = document.querySelector("input");
@@ -40,10 +39,17 @@ input.addEventListener("keyup", submitAnswer);
 input.addEventListener("change", () => {
   const inputText = input.value;
 
+  input.classList.remove("invalid-answer");
+
   if (inputText.length !== 5) {
     input.classList.add("invalid-answer");
-  } else {
-    input.classList.remove("invalid-answer");
+    invalidAlert.innerHTML = "Answer must have 5 letters";
+    return;
+  }
+
+  if (!words.includes(inputText)) {
+    input.classList.add("invalid-answer");
+    invalidAlert.innerHTML = "Answer is not in the word list";
   }
 });
 
@@ -101,7 +107,8 @@ function submitAnswer(e) {
 function checkValidWord(word) {
   const isOnlyLetters = /^[a-zA-Z]+$/.test(word);
   const isFiveLetters = word.length === 5;
-  return isFiveLetters && isOnlyLetters;
+  const isInWordList = words.includes(word);
+  return isFiveLetters && isOnlyLetters && isInWordList;
 }
 
 function updateHtml() {
