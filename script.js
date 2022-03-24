@@ -11,7 +11,6 @@ const solutionSpan = document.querySelector(".fail span");
 
 const answers = ["", "", "", "", "", ""];
 const solution = words[Math.floor(Math.random() * words.length)];
-console.log(solution);
 let attemptNumber = 0;
 
 input.addEventListener("change", submitAnswer);
@@ -87,12 +86,13 @@ function colourAnswers() {
   answers.forEach((answer, rowIndex) => {
     const answerRow = answerRows[rowIndex];
     const answerSpans = answerRow.querySelectorAll(".letter-span");
-    const solutionLetters = [...solution];
+    const solutionLetters = solution.split("");
     const answerLetters = answer.split("");
 
     answerLetters.forEach((letter, index) => {
       if (solutionLetters[index] === letter) {
         answerSpans[index].classList.add("green");
+        answerLetters.splice(index, 1, "");
         solutionLetters.splice(index, 1, "");
       }
     });
